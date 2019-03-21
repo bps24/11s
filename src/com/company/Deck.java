@@ -4,36 +4,16 @@ import java.util.*;
 
 public class Deck {
 
-    public int size;
-    public ArrayList lst;
+    private int size;
+    private ArrayList <Card> cards;
 
-    public Deck() {
-        ArrayList lst = new ArrayList<Card>();
-        for(int i=1;i<10;i++)
-            lst.add(new Card(Integer.toString(i),"spade",i));
-        for(int i=1;i<10;i++)
-            lst.add(new Card(Integer.toString(i),"heart",i));
-        for(int i=1;i<10;i++)
-            lst.add(new Card(Integer.toString(i),"diamond",i));
-        for(int i=1;i<10;i++)
-            lst.add(new Card(Integer.toString(i),"club",i));
-        lst.add((new Card("King", "spade",12));
-        lst.add(new Card("Queen", "spade",12));
-        lst.add(new Card("Jack", "spade",12));
-        lst.add(new Card("Ace", "spade",1));
-        lst.add(new Card("King", "heart",12));
-        lst.add(new Card("Queen", "heart",12));
-        lst.add(new Card("Jack", "heart",12));
-        lst.add(new Card("Ace", "heart",1));
-        lst.add(new Card("King", "diamond",12));
-        lst.add(new Card("Queen", "diamond",12));
-        lst.add(new Card("Jack", "diamond",12));
-        lst.add(new Card("Ace", "diamond",1));
-        lst.add(new Card("King", "club",12));
-        lst.add(new Card("Queen", "club",12));
-        lst.add(new Card("Jack", "club",12));
-        lst.add(new Card("Ace", "club",1));
-        this.size=lst.size();
+    public Deck( String [] ranks, String [] suits, int [] pointValues) throws NullPointerException
+    {
+        cards = new ArrayList<>();
+        for(int rank=0;rank<ranks.length;rank++)
+            for(int suit=0;suit<suits.length;suit++)
+                cards.add(new Card(ranks[rank],suits[suit],pointValues[rank]));
+        this.size=cards.size();
     }
 
     public void Shuffle() { }
@@ -44,6 +24,34 @@ public class Deck {
 
     public Card deal() {
         size--;
-        return (Card)lst.get(size);
+        return cards.get(size);
+    }
+
+    @Override
+    public String toString() {
+        String rtn = "size = " + size + "\nUndealt cards: \n";
+
+        for (int k = size - 1; k >= 0; k--)
+        {
+            rtn += cards.get(k);
+            if (k != 0)
+                rtn += ", ";
+            if ((size - k) % 2 == 0)
+                rtn += "\n";
+        }
+
+        rtn +="\nDealt cards: \n";
+
+        for (int k = cards.size() - 1; k >= size; k--)
+        {
+            rtn += cards.get(k);
+            if (k != size)
+                rtn += ", ";
+            if ((k - cards.size()) % 2 == 0)
+                rtn += "\n";
+
+        }
+
+        return rtn + "\n";
     }
 }
