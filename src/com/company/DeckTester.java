@@ -1,11 +1,13 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class DeckTester {
 
     public static void main(String[] args) {
         String [] a1 = new String[]{"a", "b", "c","d"};
         String [] a2 = new String[]{"red", "blue", "green"};
-        int [] a3 = new int[]{1,2,3,4};
+        int [] a3 = new int[]{1,2,3,4,5,6,7,8};
 
         String [] b1 = new String[]{"a", "b", "c","d"};
         String [] b2 = new String[]{"red"};
@@ -19,8 +21,16 @@ public class DeckTester {
         Deck b = new Deck(b1,b2,b3);
         Deck c = new Deck(c1,c2,c3);
 
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
+        //System.out.println(a);
+        //System.out.println(b);
+        //System.out.println(c);
+
+        System.out.println(Arrays.toString(a3));
+        Shuffler.perfectShuffle(a3);
+        System.out.println(Arrays.toString(a3));
+
+
+
+
     }
 }
