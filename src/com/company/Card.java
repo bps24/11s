@@ -20,10 +20,9 @@ public class Card {
     public int pointValue() { return this.pointValue; }
 
     public boolean matches(Card otherCard) {
-        if(this.pointValue==otherCard.pointValue&&this.rank.equals(otherCard.rank)&&this.suit.equals(otherCard.suit))
-            return true;
-        else
-            return false;
+        return otherCard.suit.equals(this.suit)&&
+                otherCard.rank.equals(this.rank)&&
+                otherCard.pointValue==this.pointValue;
     }
 
     @Override

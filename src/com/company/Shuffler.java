@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Shuffler {
@@ -45,6 +46,23 @@ public class Shuffler {
             values[i]=shuff[i];
     }
 
+    public static void selectionShuffle(Card[] values)
+    {
+        Card [] shuff = new Card[values.length];
+
+        for(int i=0;i<shuff.length;i++)
+            shuff[i]=null;
+        for(int i=0;i<values.length;i++)
+        {
+            int rd;
+            do rd = (int) (Math.random() * values.length);
+            while(shuff[rd]!=null);
+            shuff[rd]=values[i];
+        }
+        for(int i=0;i<values.length;i++)
+            values[i]=shuff[i];
+    }
+
     public static void selectionShuffle(int[] values)
     {
         int [] shuff = new int[values.length];
@@ -60,5 +78,21 @@ public class Shuffler {
         }
         for(int i=0;i<values.length;i++)
             values[i]=shuff[i];
+    }
+
+    public static ArrayList<Card> toList (Card[] cards)
+    {
+       ArrayList<Card> car= new ArrayList<>();
+       for(int i=0;i<cards.length;i++)
+           car.add(cards[i]);
+       return car;
+    }
+
+    public static  Card[] toArray (ArrayList<Card> cards)
+    {
+       Card[]cards2= new Card[cards.size()];
+        for(int i=0;i<cards.size();i++)
+            cards2[i]=cards.get(i);
+        return cards2;
     }
 }
